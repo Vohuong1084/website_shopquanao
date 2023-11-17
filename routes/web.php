@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login/store', [LoginController::class, 'store']);
+Route::post('/login', [LoginController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {
 
@@ -15,7 +15,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', [MainController::class, 'index'])->name('admin');
         Route::get('/main', [MainController::class, 'index']);
 
- 
+    
         #menu
         Route::prefix('menus')->group(function () {
             Route::get('add', [MenuController::class, 'create']);
