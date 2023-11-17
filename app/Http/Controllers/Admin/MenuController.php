@@ -34,4 +34,8 @@ class MenuController extends Controller
             'menus' => $this->menuService->listAllMenu()
         ]);
     }
+    // public function destroy(Request $request)
+    // {
+    //     $result = $this->menu
+    // }
 }
