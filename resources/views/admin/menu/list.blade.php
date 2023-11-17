@@ -14,7 +14,7 @@
                 <tr>
                     <td>{{ $key + 1 }}</td>
                     <td>{{ $item->name }}</td>
-                    <td><img src="{{ asset('img') }}/{{ date('Y/m/d') }} / {{ $item->hinhanh }}"width="150" height="150"></td>
+                    <td><img src="{{ $item->hinhanh }}" width="150" height="150"></td>
                 </tr>
             @endforeach
             <tr>
