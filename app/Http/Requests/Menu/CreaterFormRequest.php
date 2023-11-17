@@ -23,14 +23,14 @@ class CreaterFormRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'thumb' => 'required'
+            'hinhanh' => 'required'
         ];
     }
     public function messages() : array
     {
         return [
             'name.required' => 'Hãy nhập tên Danh Mục',
-            'thumb.required' => 'Hãy chọn Hình Ảnh'
+            'hinhanh.required' => 'Hãy chọn Hình Ảnh'
         ];
     }
 }
