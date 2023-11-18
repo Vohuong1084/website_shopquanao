@@ -19,10 +19,10 @@ class MenuController extends Controller
     }
     public function create(){
         return view('admin.menu.add', [
-            'title' => 'Thêm Danh Mục Mới',
-           // 'menus' => $this->menuService->getParent()
+            'title' => 'Thêm Danh Mục Mới'
         ]);
     }
+
     public function store(CreaterFormRequest $request){
         $result = $this->menuService->create($request);
 
@@ -34,8 +34,33 @@ class MenuController extends Controller
             'menus' => $this->menuService->listAllMenu()
         ]);
     }
-    // public function destroy(Request $request)
-    // {
-    //     $result = $this->menu
-    // }
+
+    public function destroy(Request $request)
+    {
+        $result = $this->menuService->destroy($request);
+        if($result)
+        {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa Thành Công'
+            ]);
+        }
+        return response()->json([
+            'error' => true
+        ]); 
+    }
+    
+    public function show(Menu $menu)
+    {
+        return view('admin.menu.edit',[
+            'title' => 'Chỉnh sửa Danh Mục' . $menu->name,
+            'menus' => $menu
+        ]);
+    }
+    public function update(Menu $menu, CreaterFormRequest $request)
+    {
+        $this->menuService->update($request, $menu);
+
+        return redirect('/admin/menus/list');
+    }
 }

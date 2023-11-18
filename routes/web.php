@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -27,16 +28,17 @@ Route::middleware(['auth'])->group(function () {
         });
 
         #product
-        Route::prefix('products')->group(function(){
-            Route::get('addproduct', [MenuController::class, 'create']);
-            Route::post('addproduct', [MenuController::class, 'store']);
-            Route::get('listproduct', [MenuController::class, 'index']);
-            Route::get('editsp/{menu}', [MenuController::class, 'show']);
-            Route::post('editsp/{menu}', [MenuController::class, 'update']);
-            Route::DELETE('destroysp', [MenuController::class, 'destroy']);
+        Route::prefix('product')->group(function(){
+            Route::get('addproduct', [ProductController::class, 'create']);
+            Route::post('addproduct', [ProductController::class, 'store']);
+            Route::get('listproduct', [ProductController::class, 'index']);
+            Route::get('editsp/{menu}', [ProductController::class, 'show']);
+            Route::post('editsp/{menu}', [ProductController::class, 'update']);
+            Route::DELETE('destroysp', [ProductController::class, 'destroy']);
         });
 
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
+
     });
 });
