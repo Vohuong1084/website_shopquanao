@@ -11,23 +11,25 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('admin.users.login', [
-            'title' => 'Đăng nhập hệ thống'
+        return view('user.account.login', [
+            'title' => 'Đăng nhập'
         ]);
     }
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email:filter',
+            'name' => 'required',
             'password' => 'required'
         ]);
 
-        if (Auth::attempt([
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            // 'level' => 1
-        ], $request->input('remember'))) {
-            return redirect()->route('admin');
+        if (Auth::attempt(['name' => $request->input('name'), 'password' => $request->input('password')])) {
+            $user = Auth::user();
+            if ($user->DEC === "ADMIN") {
+                return redirect()->route('admin');
+            }
+            else {
+                return redirect()->route('user');
+            }
         }
         Session::flash('error', 'Email hoặc Password không đúng');
         return redirect()->back();

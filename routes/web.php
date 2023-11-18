@@ -1,20 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\User\Homecontroller;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\Users\LoginController;
+use App\Http\Controllers\Admin\Users\LogoutController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
+Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
+Route::get('/home', [Homecontroller::class, 'index'])->name('user');
 
 Route::middleware(['auth'])->group(function () {
 
     Route::prefix('/admin')->group(function () {
         Route::get('/', [MainController::class, 'index'])->name('admin');
-        Route::get('/main', [MainController::class, 'index']);
 
     
         #menu
