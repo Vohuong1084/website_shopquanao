@@ -12,34 +12,44 @@ class ProductController extends Controller
 
     public function __construct(ProductService $productService)
     {
+        $this->productService = $productService;
     }
 
     public function index()
     {
-        //
+        
     }
-    
+
+    // tạo giao diện
     public function create()
     {
+        $infor = $this->productService->listMenu();
         return view('admin.product.addproduct', [
-            'title' => 'Thêm Sản Phẩm'
+            'title' => 'Thêm Sản Phẩm',
+            'infor' => $infor
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
+    // 
     public function store(Request $request)
     {
-        //
+        $this->productService->addProduct($request);
+
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        return view('admin.product.listproduct', [
+            'title' => 'Danh Sách Sản Phẩm',
+            'products' => $this->productService->get()
+        ]);
     }
 
     /**
@@ -53,6 +63,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    // 
     public function update(Request $request, string $id)
     {
         //
@@ -61,8 +72,15 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $result = $this->productService->destroy($request);
+        if($result)
+        {
+            return response()->json([
+                'error' => false,
+                'message' => 'Đã Xóa Sản Phẩm Thành Công'
+            ]);
+        }
     }
 }

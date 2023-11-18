@@ -11,7 +11,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -31,5 +31,19 @@ class ProductRequest extends FormRequest
             'color' => 'require',
             'size' => 'require',
         ];
+    }
+    public function messages() : array
+    {
+        return [
+            'nameproduct.require' => 'Hãy nhập tên sản phẩm, không được để trống',
+            'content.require' => 'Hãy nhập mô tả sản phẩm',
+            'menu_id.require' => 'Hãy chọn tên Danh Mục, không được để trống',
+            'price.require' => 'Hãy nhập giá, không được để trống',
+            'hinhanhproduct.require' => 'Hãy nhập hình ảnh sản phẩm, không được để trống',
+            'soluong.require' => 'Hãy nhập số lượng sản phẩm, không được để trống',
+            'color.require' => 'Hãy nhập màu của sản phẩm, không được để trống',
+            'size.require' => 'Hãy nhập kích thước sản phẩm, không được để trống',
+
+        ];  
     }
 }

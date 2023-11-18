@@ -10,4 +10,6 @@
 
 <link rel="stylesheet" href="/template/admin/dist/css/adminlte.min.css?v=3.2.0">
 
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
+
 <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -31,10 +31,10 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('product')->group(function(){
             Route::get('addproduct', [ProductController::class, 'create']);
             Route::post('addproduct', [ProductController::class, 'store']);
-            Route::get('listproduct', [ProductController::class, 'index']);
+            Route::get('listproduct', [ProductController::class, 'show']);
             Route::get('editsp/{menu}', [ProductController::class, 'show']);
             Route::post('editsp/{menu}', [ProductController::class, 'update']);
-            Route::DELETE('destroysp', [ProductController::class, 'destroy']);
+            Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 
         #upload

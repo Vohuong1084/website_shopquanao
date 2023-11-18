@@ -20,4 +20,8 @@ class Product extends Model
         'size'
     ];
     
+    public function menu()
+    {
+        return $this->hasOne(Menu::class, 'id', 'menu_id')->withDefault(['name' => '']);
+    }
 }

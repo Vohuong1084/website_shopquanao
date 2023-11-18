@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Session;
 class ProductService
 {
     
-    public function create($request)
+    // thêm sản phẩm
+    public function addProduct($request) 
     {
         try {
 
@@ -22,18 +23,27 @@ class ProductService
         }
         return true;
     }
-    // public function listAllMenu(){
-    //     return DB::table('menus')->simplePaginate(10);
-    // }
-    // public function destroy($request)
-    // {
-    //     $id =  (int)$request->input('id');
-    //     $menu = Menu::where('id', $id)->first();
-    //     if($menu){
-    //         return Menu::where('id', $id)->delete();
-    //     }
-    //     return false;
-    // }
+
+    // Liệt kê danh mục
+    public function listMenu() 
+    {
+        return DB::table('menus')->get();
+    }
+    
+    public function get()
+    {
+        return Product::with('menu')
+                ->orderByDesc('id')->paginate(10);
+    }
+    public function destroy($request)
+    {
+        $id =  (int)$request->input('id');
+        $menu = Product::where('id', $id)->first();
+        if($menu){
+            return Product::where('id', $id)->delete();
+        }
+        return false;
+    }
     // public function update($request, $menu)
     // {
     //     $menu->name = (string) $request->input('name');

@@ -1,11 +1,7 @@
 @extends('admin.main')
 
-@section('head')
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/classic/ckeditor.js"></script>
-@endsection
 
 @section('content')
-    @include('admin.alert')
     <form action="" method="post" enctype="multipart/form-data">
         <div class="card-body">
             <div class="row">
@@ -45,7 +41,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Màu sắc</label>
-                        <input type="text" class="form-control" name="mausac">
+                        <input type="text" class="form-control" name="color">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -56,8 +52,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-form-label" for="inputSuccess">Mô tả chi tiết</label>
-                <textarea type="text" class="form-control is-warning" id="content" name="content"></textarea>
+                <label class="col-form-label" for="content">Mô tả chi tiết</label>
+                <textarea class="form-control" id="content" name="content"></textarea>
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="inputError">Chọn ảnh sản phẩm</label>
@@ -65,7 +61,7 @@
                 <div id="img_show">
 
                 </div>
-                <input type="hidden" name="hinhanh" id="hinhanh">
+                <input type="hidden" name="hinhanhproduct" id="hinhanh">
             </div>
         </div>
         <div class="card-footer">
@@ -73,14 +69,4 @@
         </div>
         @csrf
     </form>
-@endsection
-
-@section('footer')
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#content'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
 @endsection
