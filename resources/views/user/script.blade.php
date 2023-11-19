@@ -9,3 +9,5 @@
 
 <!-- Template Javascript -->
 <script src="/template/user/js/main.js"></script>
+
+<script src="/template/admin/js/main.js"></script>

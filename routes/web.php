@@ -8,9 +8,11 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\LogoutController;
+use App\Http\Controllers\Admin\Users\RegisterController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
 Route::get('/home', [Homecontroller::class, 'index'])->name('user');
 
@@ -45,3 +47,6 @@ Route::middleware(['auth'])->group(function () {
 
     });
 });
+
+#upload
+Route::post('upload/services', [UploadController::class, 'store']);
