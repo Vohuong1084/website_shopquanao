@@ -38,7 +38,31 @@ $('#upload').change(function() {
         url: '/admin/upload/services',
         success: function (result) {
             if (result.error === false) {
-                $('#img_show').html('<a href="'+ result.url +'" target="_blank"><img src="'+ result.url +'" style="width:100px;"></a>')
+                $('#img_show').html('<a href="'+ result.url +'" target="_blank"><img src="'+ result.url +'" style="width: 100px"></a>')
+                $('#hinhanh').val(result.url)
+            }
+            else {
+                alert('Upload file lỗi')
+            }
+        }
+    })
+});
+
+// uploadFile Đăng kí
+$('#upload1').change(function() {
+    const form = new FormData();
+    form.append('file', $(this)[0].files[0]);
+
+    $.ajax({
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        dataType: 'JSON',
+        data: form,
+        url: '/upload/services',
+        success: function (result) {
+            if (result.error === false) {
+                $('#img_show').html('<a href="'+ result.url +'" target="_blank"><img src="'+ result.url +'" style="width:100px; border-radius: 50%; margin: 10px;"></a>')
                 $('#hinhanh').val(result.url)
             }
             else {

@@ -20,3 +20,5 @@
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="/template/user/css/style.css" rel="stylesheet">
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
