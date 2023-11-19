@@ -21,12 +21,11 @@
                 <tr>
                     <td style="width: 50px;">{{ $key + 1 }}</td>
                     <td>{{ $item->nameproduct }}</td>
-                    <td>{{ $item->content }}</td>
+                    <td>{!! $item->content !!}</td>
                     <td>{{ $item->menu->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
                         <img src="{{ $item->hinhanhproduct }}" width="150" height="150">
-                        
                     </td>
                     <td>{{ $item->soluong }}</td>
                     <td>{{ $item->color }}</td>

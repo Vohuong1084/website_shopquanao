@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
             'hinhanhproduct.require' => 'Hãy nhập hình ảnh sản phẩm, không được để trống',
             'soluong.require' => 'Hãy nhập số lượng sản phẩm, không được để trống',
             'color.require' => 'Hãy nhập màu của sản phẩm, không được để trống',
-            'size.require' => 'Hãy nhập kích thước sản phẩm, không được để trống',
+            'size.require' => 'Hãy nhập kích thước sản phẩm, không được để trống'
 
         ];  
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Product\ProductService;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -15,10 +16,6 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
 
-    public function index()
-    {
-        
-    }
 
     // tạo giao diện
     public function create()
@@ -30,10 +27,6 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    // 
     public function store(Request $request)
     {
         $this->productService->addProduct($request);
@@ -41,9 +34,7 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     */
+   
     public function show()
     {
         return view('admin.product.listproduct', [
@@ -52,21 +43,19 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.product.editproduct',[
+            'title' => 'Chỉnh Sửa Thông Tin Sản Phẩm',
+            'products' => $product,
+            'menus' => $this->productService->listMenu()
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    // 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $this->productService->update($request, $product) ;
+        return redirect('admin/product/listproduct');
     }
 
     /**
