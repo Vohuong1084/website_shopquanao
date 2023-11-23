@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Services\Menu\MenuService;
 
 class Homecontroller extends Controller
 {
+    protected $MenuService;
+
+    public function __construct(MenuService $MenuService) {
+        $this->MenuService = $MenuService;
+    }
+
     public function index() {
         $title = "Trang chủ";
-        return view('user.home', compact('title'));
+        $menus = $this->MenuService->listAllMenu();
+        return view('user.home', compact('title', 'menus'));
     }
 }

@@ -23,7 +23,7 @@ class ProductController extends Controller
         $infor = $this->productService->listMenu();
         return view('admin.product.addproduct', [
             'title' => 'Thêm Sản Phẩm',
-            'infor' => $infor
+            'infor' => $infor,
         ]);
     }
 
@@ -45,6 +45,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        // dd($id);
         return view('admin.product.editproduct',[
             'title' => 'Chỉnh Sửa Thông Tin Sản Phẩm',
             'products' => $product,
@@ -52,9 +53,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $this->productService->update($request, $product) ;
+        $this->productService->update($request, $id);
         return redirect('admin/product/listproduct');
     }
 
