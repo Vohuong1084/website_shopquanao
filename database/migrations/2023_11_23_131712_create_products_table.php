@@ -15,12 +15,24 @@ return new class extends Migration
             $table->id();
             $table->string('nameproduct', 255);
             $table->longtext('content')->nulladble();
-            $table->integer('menu_id');
+            $table->unsignedBigInteger('menu_id');
             $table->integer('price');
             $table->string('hinhanhproduct');
             $table->integer('soluong');
-            $table->string('color');
-            $table->string('size');
+            $table->unsignedBigInteger('size_id');
+            $table->unsignedBigInteger('color_id');
+            $table->foreign('menu_id')
+                ->references('id')
+                ->on('menus')
+                ->onDelete('cascade');
+                $table->foreign('size_id')
+                ->references('id')
+                ->on('sizes')
+                ->onDelete('cascade');
+                $table->foreign('color_id')
+                ->references('id')
+                ->on('colors')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -42,6 +42,12 @@ Route::middleware(['auth'])->group(function () {
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 
+        #color
+        Route::prefix('color')->group(function(){
+            Route::get('add', [ColorController::class, 'add']);
+
+        });
+
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
 

@@ -41,13 +41,23 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Màu sắc</label>
-                        <input type="text" class="form-control" name="color">
+                        <select name="menu_id" id="menu_id" class="form-control">
+                            <option value="0">Màu sắc</option>
+                            @foreach ($infor as $item)
+                            <option value="{{ $item->id }}">{{ $item->namecolor }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Size</label>
-                        <input type="text" class="form-control" name="size">
+                        <select name="menu_id" id="menu_id" class="form-control">
+                            <option value="0">Size</option>
+                            @foreach ($infor as $item)
+                            <option value="{{ $item->id }}">{{ $item->namesize }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
