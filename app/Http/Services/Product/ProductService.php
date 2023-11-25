@@ -64,19 +64,49 @@ class ProductService
         }
         return false;
     }
-    public function update($request, $product)
+    public function update($request, $id)
     {
-        $product->nameproduct = (string) $request->input('nameproduct');
-        $product->hinhanhproduct = (string) $request->input('hinhanhproduct');
-        $product->content = (string) $request->input('content');
-        $product->price = (float) $request->input('price');
-        $product->color = (string) $request->input('color');
-        $product->menu_id = (int) $request->input('menu_id');
-        $product->soluong = (int) $request->input('soluong');
-        $product->size = (string) $request->input('size');
-        $product->save();
+        $file = $request->file('hinhanh'); // Lấy file
 
-        Session::flash('success', 'Cập nhật thành công Sản Phẩm');
-        return true;
+        if ($file) { // Nếu file tồn tại thì chạy cái này
+            
+            try {
+                DB::table('products')->where('id', '=', $id)->update([
+                    'nameproduct' => $request->input('nameproduct'),
+                    'content' => $request->input('content'),
+                    'menu_id' => $request->input('menu_id'),
+                    'price' => $request->input('price'),
+                    'hinhanhproduct' => $request->input('hinhanh'),
+                    'soluong' => $request->input('soluong'),
+                    'color' => $request->input('color'),
+                    'size' => $request->input('size')
+                ]);
+    
+                Session::flash('success', 'Cập nhật thành công Sản Phẩm');
+            } catch (\Throwable $th) {
+                return false;
+            }
+
+            return true;
+        }
+        else { // Nếu file không tồn tại thì chạy cái này
+            try {
+                DB::table('products')->where('id', '=', $id)->update([
+                    'nameproduct' => $request->input('nameproduct'),
+                    'content' => $request->input('content'),
+                    'menu_id' => $request->input('menu_id'),
+                    'price' => $request->input('price'),
+                    'soluong' => $request->input('soluong'),
+                    'color' => $request->input('color'),
+                    'size' => $request->input('size')
+                ]);
+    
+                Session::flash('success', 'Cập nhật thành công Sản Phẩm');
+            } catch (\Throwable $th) {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

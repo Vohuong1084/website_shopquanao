@@ -26,8 +26,11 @@ class ProductController extends Controller
         return view('admin.product.addproduct', [
             'title' => 'Thêm Sản Phẩm',
             'infor' => $infor,
+<<<<<<< HEAD
             'sizee' => $sizee,
             'colorr' => $colorr
+=======
+>>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959
         ]);
     }
 
@@ -49,6 +52,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        // dd($id);
         return view('admin.product.editproduct',[
             'title' => 'Chỉnh Sửa Thông Tin Sản Phẩm',
             'products' => $product,
@@ -56,9 +60,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $this->productService->update($request, $product) ;
+        $this->productService->update($request, $id);
         return redirect('admin/product/listproduct');
     }
 

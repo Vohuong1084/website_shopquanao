@@ -5,7 +5,7 @@
 
         <div class="col-md-12">
 
-            <div class="card card-primary">
+            <div class="card card-primary mb-0">
 
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="card-body">

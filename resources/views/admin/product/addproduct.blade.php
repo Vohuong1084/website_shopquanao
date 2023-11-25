@@ -17,7 +17,7 @@
                         <select name="menu_id" id="menu_id" class="form-control">
                             <option value="0">Danh mục</option>
                             @foreach ($infor as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>

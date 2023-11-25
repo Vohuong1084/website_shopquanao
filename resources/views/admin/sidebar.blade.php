@@ -20,10 +20,9 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-       with font-awesome or any other icon font library -->
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                {{-- Danh mục --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
@@ -47,6 +46,8 @@
                         </li>
                     </ul>
                 </li>
+
+                {{-- Sản phẩm --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-shopping-basket"></i>
@@ -70,6 +71,7 @@
                         </li>
                     </ul>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-palette"></i>
@@ -119,6 +121,10 @@
             </ul>
         </nav>
         
+=======
+            </ul>
+        </nav>
+>>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->

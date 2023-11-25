@@ -18,16 +18,26 @@
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+<<<<<<< HEAD
                     <h6 class="m-0">Danh Mục</h6>
+=======
+                    <h6 class="m-0">Danh mục</h6>
+>>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+<<<<<<< HEAD
                        
                         <a href="" class="nav-item nav-link">Nam</a>
                         <a href="" class="nav-item nav-link">Nữ</a>
                         <a href="" class="nav-item nav-link">Bé Trai</a>
                         <a href="" class="nav-item nav-link">Bé Gái</a>
+=======
+                        @foreach ($menus as $item)
+                            <a href="cuahang/{{ $item->id }}/{{ Str::slug($item->name) }}.hmtl" class="nav-item nav-link">{{ $item->name }}</a>
+                        @endforeach
+>>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959
                     </div>
                 </nav>
             </div>
@@ -42,7 +52,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/home" class="nav-item nav-link">Trang chủ</a>
-                            <a href="shop.html" class="nav-item nav-link">Cửa hàng</a>
+                            <a href="/cuahang" class="nav-item nav-link">Cửa hàng</a>
                             <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
