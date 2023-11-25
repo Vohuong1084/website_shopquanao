@@ -16,12 +16,22 @@ class Product extends Model
         'price',
         'hinhanhproduct',
         'soluong',
-        'color',
-        'size'
+        'color_id',
+        'size_id'
     ];
     
     public function menu()
     {
         return $this->hasOne(Menu::class, 'id', 'menu_id');
+    }
+
+    public function color()
+    {
+        return $this->hasOne(Color::class, 'id', 'color_id');
+    }
+
+    public function size()
+    {
+        return $this->hasOne(Size::class, 'id', 'size_id');
     }
 }

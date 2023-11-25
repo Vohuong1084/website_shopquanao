@@ -5,14 +5,13 @@
 
         <div class="col-md-12">
 
-            <div class="card card-primary">
+            <div class="card card-primary mb-0">
 
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Màu</label>
-                            <input type="text" class="form-control" name="name" id="exampleInputEmail1"
-                                placeholder="Enter name">
+                            <input type="text" class="form-control" name="namecolor" id="exampleInputEmail1">
                         </div>
                     </div>
                     <div class="card-footer">

@@ -80,13 +80,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/menus/add" class="nav-link">
+                            <a href="/admin/color/add" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm Màu</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/menus/list" class="nav-link">
+                            <a href="/admin/color/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh Sách Màu</p>
                             </a>
@@ -95,7 +95,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-hat-cowboy-side"></i>
+                        <i class="nav-icon fas fa-palette"></i>
                         <p>
                             Size
                             <i class="right fas fa-angle-left"></i>
@@ -103,13 +103,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/menus/add" class="nav-link">
+                            <a href="/admin/size/add" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm Size</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/menus/list" class="nav-link">
+                            <a href="/admin/size/list" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh Sách Size</p>
                             </a>

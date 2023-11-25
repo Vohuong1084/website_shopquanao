@@ -41,9 +41,9 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Màu sắc</label>
-                        <select name="menu_id" id="menu_id" class="form-control">
+                        <select name="color_id" id="menu_id" class="form-control">
                             <option value="0">Màu sắc</option>
-                            @foreach ($infor as $item)
+                            @foreach ($colorr as $item)
                             <option value="{{ $item->id }}">{{ $item->namecolor }}</option>
                             @endforeach
                         </select>
@@ -52,9 +52,9 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Size</label>
-                        <select name="menu_id" id="menu_id" class="form-control">
+                        <select name="size_id" id="menu_id" class="form-control">
                             <option value="0">Size</option>
-                            @foreach ($infor as $item)
+                            @foreach ($sizee as $item)
                             <option value="{{ $item->id }}">{{ $item->namesize }}</option>
                             @endforeach
                         </select>

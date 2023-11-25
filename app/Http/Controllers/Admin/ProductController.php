@@ -21,9 +21,13 @@ class ProductController extends Controller
     public function create()
     {
         $infor = $this->productService->listMenu();
+        $sizee = $this->productService->listSize();
+        $colorr = $this->productService->listColor();
         return view('admin.product.addproduct', [
             'title' => 'Thêm Sản Phẩm',
-            'infor' => $infor
+            'infor' => $infor,
+            'sizee' => $sizee,
+            'colorr' => $colorr
         ]);
     }
 
@@ -68,7 +72,7 @@ class ProductController extends Controller
         {
             return response()->json([
                 'error' => false,
-                'message' => 'Đã Xóa Sản Phẩm Thành Công'
+                ' message' => 'Đã Xóa Sản Phẩm Thành Công'
             ]);
         }
     }

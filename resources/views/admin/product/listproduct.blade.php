@@ -22,14 +22,14 @@
                     <td style="width: 50px;">{{ $key + 1 }}</td>
                     <td>{{ $item->nameproduct }}</td>
                     <td>{!! $item->content !!}</td>
-                    <td>{{ $item->menu->name }}</td>
+                    <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
                         <img src="{{ $item->hinhanhproduct }}" width="150" height="150">
                     </td>
                     <td>{{ $item->soluong }}</td>
-                    <td>{{ $item->color }}</td>
-                    <td>{{ $item->size}}</td>
+                    <td>{{ $item->namecolor }}</td>
+                    <td>{{ $item->namesize}}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="/admin/product/edit/{{ $item->id }}">
                             <i class="fas fa-edit"></i>
