@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Color\ColorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Homecontroller;
 use App\Http\Controllers\Admin\MainController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\Size\SizeController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\LogoutController;
 use App\Http\Controllers\Admin\Users\RegisterController;
@@ -46,9 +48,31 @@ Route::middleware(['auth'])->group(function () {
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 
+        #color
+        Route::prefix('/color')->group(function(){
+            Route::get('/add', [ColorController::class, 'add']);
+            Route::post('/add', [ColorController::class, 'store']);
+            Route::get('/list', [ColorController::class, 'index']);
+            Route::get('/edit/{color}', [ColorController::class, 'edit']);
+            Route::post('/edit/{color}', [ColorController::class, 'update']);
+            Route::DELETE('/destroy', [ColorController::class, 'destroy']);
+            
+        });
+
+        #size
+        Route::prefix('size')->group(function(){
+            Route::get('add', [SizeController::class, 'add']);
+            Route::post('add', [SizeController::class, 'store']);
+            Route::get('list', [SizeController::class, 'index']);
+            Route::get('edit/{size}', [SizeController::class, 'edit']);
+            Route::post('edit/{size}', [SizeController::class, 'update']);
+            Route::DELETE('destroy', [SizeController::class, 'destroy']);
+
+        });
+
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
-
+ 
     });
 });
 

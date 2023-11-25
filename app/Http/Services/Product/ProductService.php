@@ -29,10 +29,25 @@ class ProductService
     {
         return DB::table('menus')->get();
     }
+
+    public function listColor()
+    {
+        return DB::table('colors')->get();
+    }
     
+    public function listSize()
+    {
+        return DB::table('sizes')->get();
+    }
+
     public function get()
     {
-        return Product::with('menu')->orderByDesc('id')->paginate(10);
+        return $products = DB::table('products')
+        ->join('menus', 'menus.id', '=', 'products.menu_id')
+        ->join('colors', 'colors.id', '=', 'products.color_id')
+        ->join('sizes', 'sizes.id', '=', 'products.size_id')
+        ->select('products.*', 'menus.name', 'colors.namecolor', 'sizes.namesize')
+        ->simplePaginate(10);
     }
 
     public function getProductId($id)

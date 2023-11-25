@@ -41,8 +41,8 @@ class ProductRequest extends FormRequest
             'price.require' => 'Hãy nhập giá, không được để trống',
             'hinhanhproduct.require' => 'Hãy nhập hình ảnh sản phẩm, không được để trống',
             'soluong.require' => 'Hãy nhập số lượng sản phẩm, không được để trống',
-            'color.require' => 'Hãy nhập màu của sản phẩm, không được để trống',
-            'size.require' => 'Hãy nhập kích thước sản phẩm, không được để trống'
+            'color.require' => 'Hãy chọn Màu của sản phẩm',
+            'size.require' => 'Hãy chọn Kích Thước sản phẩm,'
 
         ];  
     }

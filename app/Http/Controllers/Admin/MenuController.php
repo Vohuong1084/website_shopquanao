@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Menu\CreateFormRequest;
 use App\Http\Requests\Menu\CreaterFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Services\Menu\MenuService;

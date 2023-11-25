@@ -71,8 +71,60 @@
                         </li>
                     </ul>
                 </li>
+<<<<<<< HEAD
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-palette"></i>
+                        <p>
+                            Màu
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/color/add" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm Màu</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/color/list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh Sách Màu</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-palette"></i>
+                        <p>
+                            Size
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/size/add" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm Size</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/size/list" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh Sách Size</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
+        
+=======
+            </ul>
+        </nav>
+>>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
