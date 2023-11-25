@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\LogoutController;
 use App\Http\Controllers\Admin\Users\RegisterController;
+use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\User\CuaHang\CuahangController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -58,3 +59,7 @@ Route::post('upload/services', [UploadController::class, 'store']);
 Route::prefix('/cuahang')->group(function () {
     Route::get('/', [CuahangController::class, 'index']);
 });
+
+// Trang liên hệ
+Route::get('/lienhe', [ContactController::class, 'index']);
+Route::post('/lienhe', [ContactController::class, 'sendmessage']);
