@@ -23,6 +23,7 @@ class SizeServices
         return true;
     }
 
+    // Lấy tất cả size
     public function getAllSize()
     {
         return DB::table('sizes')->simplePaginate(20);

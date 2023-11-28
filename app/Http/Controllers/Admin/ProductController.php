@@ -26,11 +26,8 @@ class ProductController extends Controller
         return view('admin.product.addproduct', [
             'title' => 'Thêm Sản Phẩm',
             'infor' => $infor,
-<<<<<<< HEAD
             'sizee' => $sizee,
             'colorr' => $colorr
-=======
->>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959
         ]);
     }
 
@@ -56,6 +53,8 @@ class ProductController extends Controller
         return view('admin.product.editproduct',[
             'title' => 'Chỉnh Sửa Thông Tin Sản Phẩm',
             'products' => $product,
+            'color' => $this->productService->listColor(),
+            'size' => $this->productService->listSize(),
             'menus' => $this->productService->listMenu()
         ]);
     }

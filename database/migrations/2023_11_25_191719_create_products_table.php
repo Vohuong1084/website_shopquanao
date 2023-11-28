@@ -19,18 +19,12 @@ return new class extends Migration
             $table->integer('price');
             $table->string('hinhanhproduct');
             $table->integer('soluong');
-<<<<<<<< HEAD:database/migrations/2023_11_23_131712_create_products_table.php
             $table->unsignedBigInteger('size_id');
             $table->unsignedBigInteger('color_id');
-========
-            $table->string('color');
-            $table->string('size');
->>>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959:database/migrations/2023_11_23_123424_create_products_table.php
             $table->foreign('menu_id')
                 ->references('id')
                 ->on('menus')
                 ->onDelete('cascade');
-<<<<<<<< HEAD:database/migrations/2023_11_23_131712_create_products_table.php
                 $table->foreign('size_id')
                 ->references('id')
                 ->on('sizes')
@@ -39,8 +33,6 @@ return new class extends Migration
                 ->references('id')
                 ->on('colors')
                 ->onDelete('cascade');
-========
->>>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959:database/migrations/2023_11_23_123424_create_products_table.php
             $table->timestamps();
         });
     }
