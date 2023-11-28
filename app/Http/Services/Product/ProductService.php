@@ -63,6 +63,14 @@ class ProductService
         ->withQueryString();
     }
 
+    public function getProduct()
+    {
+        return DB::table('products')->select('id', 'nameproduct', 'hinhanhproduct', 'price')
+            ->orderByDesc('id')
+            ->limit(8)
+            ->get();
+    }
+    
     public function getProductId($id)
     {
         return Product::join('menus', 'menus.id', '=', 'products.menu_id')

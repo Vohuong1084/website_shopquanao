@@ -6,7 +6,7 @@
             <tr>
                 <th class="scope">STT</th>
                 <th class="scope">Tên Sản Phẩm</th>
-                <th class="scope">Mô Tả Chi Tiết</th>                
+                <th class="scope">Mô Tả Chi Tiết</th>
                 <th class="scope">Tên Danh Mục</th>
                 <th class="scope">Giá</th>
                 <th class="scope">Hình Ảnh</th>
@@ -29,7 +29,7 @@
                     </td>
                     <td>{{ $item->soluong }}</td>
                     <td>{{ $item->namecolor }}</td>
-                    <td>{{ $item->namesize}}</td>
+                    <td>{{ $item->namesize }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="/admin/product/edit/{{ $item->id }}">
                             <i class="fas fa-edit"></i>
@@ -42,6 +42,7 @@
             @endforeach
         </tbody>
     </table>
-
-    {!! $products->links() !!}
+    <div class="card-footer clearfix">
+        {!! $products->links() !!}
+    </div>
 @endsection
