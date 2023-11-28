@@ -50,6 +50,14 @@ class ProductService
         ->simplePaginate(10);
     }
 
+    public function getProduct()
+    {
+        return DB::table('products')->select('id', 'nameproduct', 'hinhanhproduct', 'price')
+            ->orderByDesc('id')
+            ->limit(8)
+            ->get();
+    }
+    
     public function getProductId($id)
     {
         return Product::where('id', $id)->first();

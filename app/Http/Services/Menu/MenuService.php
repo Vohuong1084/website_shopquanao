@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Services\Menu;
+
 use App\Models\Menu;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -11,7 +12,7 @@ class MenuService
     {
         try {
 
-            Menu::create($request->all()); 
+            Menu::create($request->all());
 
             Session::flash('success', 'Tạo Danh Mục thành công');
         } catch (\Exception $err) {
@@ -20,18 +21,29 @@ class MenuService
         }
         return true;
     }
-    public function listAllMenu(){
+
+    public function listAllMenu()
+    {
         return DB::table('menus')->simplePaginate(10);
     }
+
+    public function show()
+    {
+        return DB::table('menus')->select('id', 'name', 'hinhanh')
+            ->orderByDesc('id')
+            ->get();
+    }
+
     public function destroy($request)
     {
         $id =  (int)$request->input('id');
         $menu = Menu::where('id', $id)->first();
-        if($menu){
+        if ($menu) {
             return Menu::where('id', $id)->delete();
         }
         return false;
     }
+
     public function update($request, $menu)
     {
         $menu->name = (string) $request->input('name');

@@ -20,7 +20,8 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
 
                 {{-- Danh mục --}}
                 <li class="nav-item">
@@ -71,7 +72,7 @@
                         </li>
                     </ul>
                 </li>
-<<<<<<< HEAD
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-palette"></i>
@@ -120,11 +121,8 @@
                 </li>
             </ul>
         </nav>
-        
-=======
-            </ul>
+        </ul>
         </nav>
->>>>>>> 14c8c4377bfe06cae9eb74f5d9ef449e7eec4959
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
