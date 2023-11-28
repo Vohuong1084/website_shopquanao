@@ -42,13 +42,25 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Màu sắc</label>
-                        <input type="text" class="form-control" name="color" value="{{ $products->color }}">
+                        <select name="color_id" id="color_id" class="form-control">
+                            <option value="0" {{ $products->color_id == 0 ? 'selected' : '' }}>Danh mục</option>
+                            @foreach ($color as $item)
+                                <option value="{{ $item->id }}" {{ $products->color_id == $item->id ? 'selected' : '' }}>
+                                    {{ $item->namecolor }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Size</label>
-                        <input type="text" class="form-control" name="size" value="{{ $products->size }}">
+                        <select name="size_id" id="size_id" class="form-control">
+                            <option value="0" {{ $products->size_id == 0 ? 'selected' : '' }}>Danh mục</option>
+                            @foreach ($size as $item)
+                                <option value="{{ $item->id }}" {{ $products->size_id == $item->id ? 'selected' : '' }}>
+                                    {{ $item->namesize }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>

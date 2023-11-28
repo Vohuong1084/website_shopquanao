@@ -22,6 +22,7 @@ class ColorServices
         return true;
     }
 
+    // Lấy tất cả màu
     public function getAllColor()
     {
         return DB::table('colors')->simplepaginate(20);

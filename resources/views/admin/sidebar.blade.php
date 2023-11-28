@@ -72,7 +72,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-palette"></i>
@@ -120,8 +119,6 @@
                     </ul>
                 </li>
             </ul>
-        </nav>
-        </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>

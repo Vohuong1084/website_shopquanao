@@ -53,4 +53,7 @@ class MenuService
         Session::flash('success', 'Cập nhật thành công Danh Mục');
         return true;
     }
+    public function listMenuById($id) {
+        return Menu::where('id', $id)->firstOrFail();
+    }
 }

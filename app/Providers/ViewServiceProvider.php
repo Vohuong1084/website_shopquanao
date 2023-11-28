@@ -2,10 +2,11 @@
  
 namespace App\Providers;
  
-use App\View\Composers\ProfileComposer;
-use Illuminate\Support\Facades;
+use App\View\Composers\NavComposer;
+use App\View\Composers\SizeComposer;
+use Illuminate\Support\Facades\View;
+use App\View\Composers\ColorComposer;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\View;
  
 class ViewServiceProvider extends ServiceProvider
 {
@@ -20,8 +21,10 @@ class ViewServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        View::composer('head', MenuComposer::class);
+        View::composer('user.nav', NavComposer::class);
+        View::composer('user.CuaHang.CuaHang', SizeComposer::class);
+        View::composer('user.CuaHang.CuaHang', ColorComposer::class);
     }
 }

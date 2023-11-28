@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\Color\ColorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Homecontroller;
 use App\Http\Controllers\Admin\MainController;
@@ -8,10 +7,13 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\Size\SizeController;
+use App\Http\Controllers\Admin\Color\ColorController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\LogoutController;
 use App\Http\Controllers\Admin\Users\RegisterController;
+use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\User\CuaHang\CuahangController;
+use App\Http\Controllers\User\ProductDetail\ProductDetailController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
@@ -79,4 +81,17 @@ Route::post('upload/services', [UploadController::class, 'store']);
 // Trang của hàng
 Route::prefix('/cuahang')->group(function () {
     Route::get('/', [CuahangController::class, 'index']);
+    
+    // Trang chi tiết sản phẩm
+    Route::get('/{id}/{slug}.html', [ProductDetailController::class, 'index']);
+
+    // Trang cửa hàng theo danh mục
+    Route::get('/{id}-{slug}.html', [CuahangController::class, 'indexById']);
+
 });
+
+// Trang liên hệ
+Route::get('/lienhe', [ContactController::class, 'index']);
+Route::post('/lienhe', [ContactController::class, 'sendmessage']);
+
+
