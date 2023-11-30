@@ -15,7 +15,9 @@
         <div class="row px-xl-5">
             <div class="col-lg-7 mb-5 container">
                 <div class="contact-form">
-                    <div id="success"></div>
+                    <div id="success">
+                        @include('user.alert')
+                    </div>
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="control-group">
                             <input type="text" class="form-control" id="name" name="name" placeholder="Nhập username"
@@ -37,7 +39,7 @@
                                 required="required" data-validation-required-message="Nhập lại mật khẩu" />
                             <p class="help-block text-danger"></p>
                         </div>
-                        <div class="control-group">
+                        <div class="control-group" style="margin-bottom: 15px">
                             <input class="form-control" id="upload1" type="file">
                         <div id="img_show" style="margin-left: 10px;">
 
