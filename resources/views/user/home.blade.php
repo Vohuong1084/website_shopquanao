@@ -53,6 +53,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/home" class="nav-item nav-link">Trang chủ</a>
                             <a href="/cuahang" class="nav-item nav-link">Cửa hàng</a>
+<<<<<<< HEAD
                             <div class="nav-item dropdown show">
                                 <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-expanded="true">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0 show">
@@ -62,10 +63,17 @@
                             </div>    
                             <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
 
+=======
+                            <a href="/lienhe" class="nav-item nav-link">Liên hệ</a>
+>>>>>>> c4db4c62ccd88b57bb3e59f98b95c2b4a4adb08b
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="/login" class="nav-item nav-link">Đăng nhập</a>
-                            <a href="/register" class="nav-item nav-link">Đăng kí</a>
+                            @if (Auth::check())
+                                <a href="/infor" class="nav-item nav-link">Xin chào, {{ Auth::user()->name }}</a>
+                            @else
+                                <a href="/login" class="nav-item nav-link">Đăng nhập</a>
+                                <a href="/register" class="nav-item nav-link">Đăng kí</a>
+                            @endif
                         </div>
                     </div>
                 </nav>
@@ -167,29 +175,34 @@
             <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
-            @foreach ($products as $key => $product)
-                
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item border-0 mb-4">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="{{ $product->hinhanhproduct }}" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">{{ $product->nameproduct}}</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>{{ $product->price }}</h6>
-                            <h6 class="text-muted ml-2"><del>{{ $product->price }}</del></h6>
+            @if (empty($products))
+                @foreach ($products as $key => $product)
+                    
+                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                        <div class="card product-item border-0 mb-4">
+                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="{{ $product->hinhanhproduct }}" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">{{ $product->nameproduct}}</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>{{ $product->price }}</h6>
+                                    <h6 class="text-muted ml-2"><del>{{ $product->price }}</del></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-center bg-light border">
+                                <a href="/cuahang/{{ $product->id }}/{{ Str::slug($product->nameproduct) }}.html" class="btn btn-sm text-dark p-0"><i
+                                        class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
+                @endforeach
+            @else
+                <div style="margin: auto">
+                    <h1>Không có sản phẩm nào</h1>
                 </div>
-            </div>
-            @endforeach
+            @endif
+            
 
         </div>
     </div>

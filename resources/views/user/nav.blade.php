@@ -34,8 +34,12 @@
                     <a href="/lienhe" class="nav-item nav-link">Liên hệ</a>
                 </div>
                 <div class="navbar-nav ml-auto py-0">
-                    <a href="/login" class="nav-item nav-link">Đăng nhập</a>
-                    <a href="/register" class="nav-item nav-link">Đăng kí</a>
+                    @if (Auth::check())
+                        <a href="/infor" class="nav-item nav-link">Xin chào, {{ Auth::user()->name }}</a>
+                    @else
+                        <a href="/login" class="nav-item nav-link">Đăng nhập</a>
+                        <a href="/register" class="nav-item nav-link">Đăng kí</a>
+                    @endif
                 </div>
             </div>
         </nav>
