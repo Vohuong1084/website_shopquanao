@@ -40,7 +40,8 @@
                     <form>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="size-{{ $product->id }}" name="size">
-                            <label class="custom-control-label" for="size-{{ $product->id }}">{{ $product->namesize }}</label>
+                            <label class="custom-control-label"
+                                for="size-{{ $product->id }}">{{ $product->namesize }}</label>
                         </div>
                     </form>
                 </div>
@@ -48,26 +49,32 @@
                     <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
                     <form>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-{{ $product->id }}" name="color">
-                            <label class="custom-control-label" for="color-{{ $product->id }}">{{ $product->namecolor }}</label>
+                            <input type="radio" class="custom-control-input" id="color-{{ $product->id }}"
+                                name="color">
+                            <label class="custom-control-label"
+                                for="color-{{ $product->id }}">{{ $product->namecolor }}</label>
                         </div>
                     </form>
                 </div>
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <div class="input-group quantity mr-3" style="width: 130px;">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus" >
-                            <i class="fa fa-minus"></i>
+                            <button class="btn btn-primary btn-minus">
+                                <i class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <input type="text" disabled style="border: none;" class="form-control bg-secondary text-center" value="1">
+                        <input type="text" disabled style="border: none;" class="form-control bg-secondary text-center"
+                            name="num_product" value="1">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-plus">
                                 <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                    <div>
+                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                        <input type="hidden" name="id" value="{{ $product->id }}">
+                    </div>
                 </div>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
@@ -114,7 +121,8 @@
                                             <i class="fas fa-star-half-alt"></i>
                                             <i class="far fa-star"></i>
                                         </div>
-                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
+                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no
+                                            at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
                                     </div>
                                 </div>
                             </div>
@@ -167,21 +175,25 @@
             <div class="col">
                 <div class="owl-carousel related-carousel">
                     @foreach ($product_menus as $item)
-                    <div class="card product-item border-0">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="{{ $item->hinhanhproduct }}" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                        <div class="card product-item border-0">
+                            <div
+                                class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                <img class="img-fluid w-100" src="{{ $item->hinhanhproduct }}" alt="">
+                            </div>
+                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                                <div class="d-flex justify-content-center">
+                                    <h6>$123.00</h6>
+                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between bg-light border">
+                                <a href="" class="btn btn-sm text-dark p-0"><i
+                                        class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                <a href="" class="btn btn-sm text-dark p-0"><i
+                                        class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                        </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
