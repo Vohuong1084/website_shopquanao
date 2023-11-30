@@ -8,16 +8,19 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\Size\SizeController;
 use App\Http\Controllers\Admin\Color\ColorController;
+use App\Http\Controllers\Admin\Users\InforController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\Users\LogoutController;
 use App\Http\Controllers\Admin\Users\RegisterController;
 use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\User\CuaHang\CuahangController;
+use App\Http\Controllers\Admin\Users\ChangeinforController;
 use App\Http\Controllers\User\ProductDetail\ProductDetailController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'insert']);
 Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
 Route::get('/home', [Homecontroller::class, 'index'])->name('user');
 
@@ -71,8 +74,13 @@ Route::middleware(['auth'])->group(function () {
 
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
- 
+
     });
+
+    // User
+    Route::get('/infor', [InforController::class, 'index']);
+    Route::get('/changeinfor/{id}', [ChangeinforController::class, 'index']);
+    Route::post('/updateinfor', [ChangeinforController::class, 'update']);
 });
 
 #upload
