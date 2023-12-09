@@ -21,4 +21,12 @@
 <!-- Customized Bootstrap Stylesheet -->
 <link href="/template/user/css/style.css" rel="stylesheet">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<!--===============================================================================================-->
+{{-- <link rel="stylesheet" type="text/css" href="/template/rating/fonts/font-awesome-4.7.0/css/font-awesome.min.css"> --}}
+<link rel="stylesheet" type="text/css" href="/template/rating/fonts/iconic/css/material-design-iconic-font.min.css">
+{{-- <link rel="stylesheet" type="text/css" href="/template/rating/css/util.css"> --}}
+<link rel="stylesheet" type="text/css" href="/template/rating/css/main.css">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<!--===============================================================================================-->

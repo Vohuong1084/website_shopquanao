@@ -21,17 +21,15 @@ return new class extends Migration
             $table->integer('soluong');
             $table->unsignedBigInteger('size_id');
             $table->unsignedBigInteger('color_id');
-            $table->string('color');
-            $table->string('size');
             $table->foreign('menu_id')
                 ->references('id')
                 ->on('menus')
                 ->onDelete('cascade');
-                $table->foreign('size_id')
+            $table->foreign('size_id')
                 ->references('id')
                 ->on('sizes')
                 ->onDelete('cascade');
-                $table->foreign('color_id')
+            $table->foreign('color_id')
                 ->references('id')
                 ->on('colors')
                 ->onDelete('cascade');
