@@ -56,26 +56,36 @@
                         </div>
                     </form>
                 </div>
-                <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-minus">
-                                <i class="fa fa-minus"></i>
-                            </button>
+                <form action="/add-cart" method="post">
+                    @csrf
+                    <div class="d-flex align-items-center mb-4 pt-2">
+                        <div class="input-group quantity mr-3" style="width: 130px;">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-primary btn-minus">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <input type="text" style="border: none;"
+                                class="form-control bg-secondary text-center" name="num_product" value="1">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-primary btn-plus">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
-                        <input type="text" disabled style="border: none;" class="form-control bg-secondary text-center"
-                            name="num_product" value="1">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
-                            </button>
+                        <div>
+                            @if (Auth::check())
+                                <button type="submit" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1">
+                                    </i> Add To Cart</button>
+                            @else
+                                <div style="margin: 20px 0">
+                                    <h3>Đăng nhập để mua hàng</h3>
+                                </div>
+                            @endif
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
                         </div>
                     </div>
-                    <div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
-                        <input type="hidden" name="id" value="{{ $product->id }}">
-                    </div>
-                </div>
+                </form>
                 <div class="d-flex pt-2">
                     <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                     <div class="d-inline-flex">
@@ -111,7 +121,8 @@
                             <div class="col-md-6">
                                 <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
                                 <div class="media mb-4">
-                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
+                                        style="width: 45px;">
                                     <div class="media-body">
                                         <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
                                         <div class="text-primary mb-2">

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Services\Product\ProductService;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Services\Product\ProductService;
 
 class ProductController extends Controller
 {
@@ -39,11 +39,11 @@ class ProductController extends Controller
     }
 
    
-    public function show()
+    public function show(Request $request)
     {
         return view('admin.product.listproduct', [
             'title' => 'Danh Sách Sản Phẩm',
-            'products' => $this->productService->get()
+            'products' => $this->productService->get($request)
         ]);
     }
 

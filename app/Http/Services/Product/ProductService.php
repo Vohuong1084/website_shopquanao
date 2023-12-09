@@ -57,10 +57,14 @@ class ProductService
         if ($request->input('price')) {
             $query->orderBy('price', $request->input('price'));
         }
-        return $query
+        $results = $query
         ->orderByDesc('id')
-        ->Paginate(9)
-        ->withQueryString();
+        ->paginate(9);
+
+        // Để bảo quản các tham số truy vấn trong link phân trang, bạn có thể sử dụng câu lệnh sau:
+        $results->appends($request->query());
+
+        return $results;
     }
 
     public function getProduct()
@@ -151,10 +155,14 @@ class ProductService
         if ($request->input('price')) {
             $query->orderBy('price', $request->input('price'));
         }
-        return $query
+        $results = $query
         ->orderByDesc('id')
-        ->Paginate(9)
-        ->withQueryString();
+        ->paginate(9);
+
+    // Để bảo quản các tham số truy vấn trong link phân trang, bạn có thể sử dụng câu lệnh sau:
+    $results->appends($request->query());
+
+    return $results;
     }
 
     // Liệt kê sản phẩm theo danh mục

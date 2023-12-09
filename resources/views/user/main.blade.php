@@ -19,7 +19,7 @@
     </div>
     <!-- Navbar End -->
 
-
+   
     @yield('content')
 
 

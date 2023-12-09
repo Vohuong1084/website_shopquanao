@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    @if (empty($product))
+                    @if (count($product) > 0)
                         @foreach ($product as $item)
                             <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                                 <div class="card product-item border-0 mb-4">

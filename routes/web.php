@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Users\RegisterController;
 use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\User\CuaHang\CuahangController;
 use App\Http\Controllers\Admin\Users\ChangeinforController;
+use App\Http\Controllers\User\Checkout\CheckoutController;
 use App\Http\Controllers\User\ProductDetail\ProductDetailController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -73,10 +74,6 @@ Route::middleware(['auth'])->group(function () {
 
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
-<<<<<<< HEAD
-=======
-
->>>>>>> c4db4c62ccd88b57bb3e59f98b95c2b4a4adb08b
     });
 
     // User
@@ -88,24 +85,27 @@ Route::middleware(['auth'])->group(function () {
 #upload
 Route::post('upload/services', [UploadController::class, 'store']);
 
-// Trang của hàng
+// Trang cửa hàng
 Route::prefix('/cuahang')->group(function () {
     Route::get('/', [CuahangController::class, 'index']);
 
     // Trang chi tiết sản phẩm
-    Route::get('/{id}/{slug}.html', [ProductDetailController::class, 'index']);
+    Route::get('/{id}/{slug}', [ProductDetailController::class, 'index']);
 
     // Trang cửa hàng theo danh mục
     Route::get('/{id}-{slug}.html', [CuahangController::class, 'indexById']);
-    
 });
 
-// Trang giỏ hàng
-// Route::prefix('/page')->group(function () {
-    Route::get('/cart', [CartController::class, 'index']);
+// Thêm vào giỏ hàng
+    Route::post('/add-cart', [CartController::class, 'index']);
 
-
+//Hiển thị trang giỏ hàng
+    Route::get('/cart', [CartController::class, 'show']);
+    Route::get('/carts/delete{id}', [CartController::class, 'remove']);
+//Check out - Thủ tục thanh toán
+    Route::get('/checkout', [CheckoutController::class, 'index']);
 
 // Trang liên hệ
 Route::get('/lienhe', [ContactController::class, 'index']);
 Route::post('/lienhe', [ContactController::class, 'sendmessage']);
+

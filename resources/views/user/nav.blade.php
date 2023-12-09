@@ -24,13 +24,7 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="/home" class="nav-item nav-link">Trang chủ</a>
                     <a href="/cuahang" class="nav-item nav-link">Cửa hàng</a>
-                    <div class="nav-item dropdown show">
-                        <a href="" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-expanded="true">Pages</a>
-                        <div class="dropdown-menu rounded-0 m-0 show">
-                            <a href="/cart" class="dropdown-item">Giỏ hàng</a>
-                            <a href="checkout.html" class="dropdown-item">Checkout</a>
-                        </div>
-                    </div>                    
+                    <a href="/checkout" class="nav-item nav-link">Checkout</a>
                     <a href="/lienhe" class="nav-item nav-link">Liên hệ</a>
                 </div>
                 <div class="navbar-nav ml-auto py-0">

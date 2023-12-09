@@ -53,19 +53,8 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/home" class="nav-item nav-link">Trang chủ</a>
                             <a href="/cuahang" class="nav-item nav-link">Cửa hàng</a>
-<<<<<<< HEAD
-                            <div class="nav-item dropdown show">
-                                <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-expanded="true">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0 show">
-                                    <a href="/cart" class="dropdown-item">Giỏ hàng</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>    
+                            <a href="/check" class="nav-item nav-link">Check</a>
                             <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
-
-=======
-                            <a href="/lienhe" class="nav-item nav-link">Liên hệ</a>
->>>>>>> c4db4c62ccd88b57bb3e59f98b95c2b4a4adb08b
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             @if (Auth::check())
@@ -156,11 +145,11 @@
         <div class="row px-xl-5 pb-3">
             @foreach ($menus as $key => $menu)
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <div class="cat-item d-flex flex-column border mb-4" style="padding: 5px;">
                         <a href="/danh-muc/{{ $menu->id }}-{{ $menu->name}}" class="cat-img position-relative overflow-hidden mb-3">
                             <img class="img-fluid" src="{{ $menu->hinhanh }}" alt="">
                         </a>
-                        {{-- <h5 class="font-weight-semi-bold m-0">{{ $menu->name }}</h5> --}}
+                        <h5 class="font-weight-semi-bold m-0 text-center" >{{ $menu->name }}</h5>
                     </div>
                 </div>
             @endforeach
@@ -175,7 +164,7 @@
             <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
         </div>
         <div class="row px-xl-5 pb-3">
-            @if (empty($products))
+            @if (count($products) > 0)
                 @foreach ($products as $key => $product)
                     
                     <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -187,7 +176,6 @@
                                 <h6 class="text-truncate mb-3">{{ $product->nameproduct}}</h6>
                                 <div class="d-flex justify-content-center">
                                     <h6>{{ $product->price }}</h6>
-                                    <h6 class="text-muted ml-2"><del>{{ $product->price }}</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-center bg-light border">

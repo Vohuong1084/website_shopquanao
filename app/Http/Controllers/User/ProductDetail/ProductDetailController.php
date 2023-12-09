@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Product\ProductService;
 use App\Http\Services\Product\ProductDetailServices;
+use App\Models\Product;
 
 class ProductDetailController extends Controller
 {
@@ -24,4 +25,5 @@ class ProductDetailController extends Controller
         $title = $product->nameproduct;
         return view('user.ProductDetail.ProductDetail', compact('title', 'product', 'product_menus'));
     }
+
 }
