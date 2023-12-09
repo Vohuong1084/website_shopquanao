@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\Cart\CartController;
 use App\Http\Controllers\User\Homecontroller;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\User\Cart\CartController;
 use App\Http\Controllers\Admin\Size\SizeController;
 use App\Http\Controllers\Admin\Color\ColorController;
 use App\Http\Controllers\Admin\Users\InforController;
@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Users\RegisterController;
 use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\User\CuaHang\CuahangController;
 use App\Http\Controllers\Admin\Users\ChangeinforController;
+use App\Http\Controllers\User\Comment\SendCommentController;
 use App\Http\Controllers\User\ProductDetail\ProductDetailController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -73,10 +74,7 @@ Route::middleware(['auth'])->group(function () {
 
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
-<<<<<<< HEAD
-=======
 
->>>>>>> c4db4c62ccd88b57bb3e59f98b95c2b4a4adb08b
     });
 
     // User
@@ -109,3 +107,6 @@ Route::prefix('/cuahang')->group(function () {
 // Trang liên hệ
 Route::get('/lienhe', [ContactController::class, 'index']);
 Route::post('/lienhe', [ContactController::class, 'sendmessage']);
+
+// Viết bình luận
+Route::post('/send_comment', [SendCommentController::class, 'sendcomment']);

@@ -46,9 +46,9 @@ class MenuController extends Controller
         }
         return response()->json([
             'error' => true
-        ]); 
+        ]);
     }
-    
+
     public function show(Menu $menu)
     {
         return view('admin.menu.edit',[

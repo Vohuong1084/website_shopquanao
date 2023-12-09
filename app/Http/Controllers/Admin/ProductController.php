@@ -39,11 +39,11 @@ class ProductController extends Controller
     }
 
    
-    public function show()
+    public function show(Request $request)
     {
         return view('admin.product.listproduct', [
             'title' => 'Danh Sách Sản Phẩm',
-            'products' => $this->productService->get()
+            'products' => $this->productService->get($request)
         ]);
     }
 

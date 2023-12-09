@@ -71,3 +71,114 @@ $('#upload1').change(function() {
         }
     })
 });
+
+// Viết bình luận
+$('#send_comment').click(function(ev) {
+    ev.preventDefault();
+    let user_id = $('#user_id').val();
+    let comment_product_id = $('#comment_product_id').val();
+    let hinhanh = $('#hinhanh').val();
+    let username = $('#username').val();
+    let message = $('#message').val();
+    let rating = $('#rating').val();
+    let currentDate = new Date();
+    let formattedDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+    
+    $.ajax({
+        type: 'POST',
+        data: {
+            comment_product_id: comment_product_id,
+            username: username,
+            hinhanh: hinhanh,
+            message: message,
+            user_id: user_id,
+            rating: rating
+        },
+        url: '/send_comment',
+        success: function(res) {
+            if(res.error === false) {
+                $('#message').val('')
+                $('#comment_show').append(
+                    '<div class="media mb-4">'+
+                        '<img src="'+res.hinhanh+'" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px; border-radius: 50%;">'+
+                        '<div class="media-body">'+
+                            '<h6>'+res.username+'<small> - <i>'+formattedDate+'</i></small></h6>'+
+                            '<div class="text-primary mb-2">'+
+                                generateStarIcons(res.rating)+
+                            '</div>'+
+                            '<p>'+res.message+'</p>'+
+                        '</div>'+
+                    '</div>')
+                function generateStarIcons(rating) {
+                    var stars = '';
+                    for (var i = 1; i <= 5; i++) {
+                        if (i <= rating) {
+                            stars += '<i class="zmdi zmdi-star" style="margin-right: 5px;"></i>';
+                        } else {
+                            stars += '<i class="zmdi zmdi-star-outline" style="margin-right: 3px;"></i>';
+                        }
+                    }
+                    return stars;
+                }
+            }
+            else {
+                $('#erorr').append('Mỗi tài khoản chỉ được bình luận một lần!!!');
+                $('#erorr').css('display', 'block')
+                $('#erorr').css('margin', '10px')
+                $('#erorr').css('color', 'red')
+                $('#erorr').fadeOut(5000);
+                // alert('Mỗi tài khoản chỉ được bình luận một lần')
+            }
+        }
+    })
+});
+
+// Sắp xếp sản phẩm theo giá
+jQuery.fn.extend({
+    setMenu:function () {
+        return this.each(function() {
+            var containermenu = $(this);
+
+            var itemmenu = containermenu.find('.xtlab-ctmenu-item');
+            itemmenu.click(function () {
+                var submenuitem = containermenu.find('.xtlab-ctmenu-sub');
+                submenuitem.slideToggle(500);
+
+            });
+
+            $(document).click(function (e) {
+                if (!containermenu.is(e.target) &&
+                    containermenu.has(e.target).length === 0) {
+                    var isopened =
+                        containermenu.find('.xtlab-ctmenu-sub').css("display");
+
+                    if (isopened == 'block') {
+                        containermenu.find('.xtlab-ctmenu-sub').slideToggle(500);
+                    }
+                }
+            });
+
+
+
+        });
+    },
+
+});
+
+
+$('.xt-ct-menu').setMenu();
+
+// Lọc giá sản phẩm
+$( function() {
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
+            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+} );
