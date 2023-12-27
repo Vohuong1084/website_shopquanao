@@ -26,27 +26,34 @@ class CuahangController extends Controller
     public function index(Request $request) {
         $title = 'Cửa hàng';
         $product = $this->ProductService->get($request);
-        return view('user.CuaHang.CuaHang', compact('title', 'product'));
+        $color = $this->ColorServices->getAllColor();
+        $size = $this->SizeServices->getAllSize();
+        $min_price = $this->ProductService->min_price();
+        $max_price = $this->ProductService->max_price();
+        return view('user.CuaHang.CuaHang', compact('title', 'product', 'color', 'size', 'min_price'));
     }
 
+    // Trang cửa hàng theo danh mục
     public function indexById($id, $slug='',Request $request) {
         $menus = $this->MenuService->listMenuById($id);
         $title = 'Cửa hàng';
+        $color = $this->ColorServices->getAllColor();
+        $size = $this->SizeServices->getAllSize();
         $product = $this->ProductService->getByMenu($menus, $request);
-        return view('user.CuaHang.CuaHang', compact('title', 'product'));
+        return view('user.CuaHang.CuaHang', compact('title', 'product', 'color', 'size', 'min_price'));
     }
 
     // Phân loại size 
-    public function sizeFilter(Request $request) {
-        $title = 'Cửa hàng';
-        $color = $this->ColorServices->getAllColor();
-        $size = $this->SizeServices->getAllSize();
-        $product = $this->ProductService->size($request);
-        if ($product) {
-            return response()->json([
-                'error' => false,
-                'product' => $product
-            ]);
-        }
-    }
+    // public function sizeFilter(Request $request) {
+    //     $title = 'Cửa hàng';
+    //     $color = $this->ColorServices->getAllColor();
+    //     $size = $this->SizeServices->getAllSize();
+    //     $product = $this->ProductService->size($request);
+    //     if ($product) {
+    //         return response()->json([
+    //             'error' => false,
+    //             'product' => $product
+    //         ]);
+    //     }
+    // }
 }

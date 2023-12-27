@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\Cart\CartController;
 use App\Http\Controllers\User\Homecontroller;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\User\Cart\CartController;
 use App\Http\Controllers\Admin\Size\SizeController;
 use App\Http\Controllers\Admin\Color\ColorController;
 use App\Http\Controllers\Admin\Users\InforController;
@@ -17,6 +17,7 @@ use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\User\CuaHang\CuahangController;
 use App\Http\Controllers\Admin\Users\ChangeinforController;
 use App\Http\Controllers\User\Checkout\CheckoutController;
+use App\Http\Controllers\User\Comment\SendCommentController;
 use App\Http\Controllers\User\ProductDetail\ProductDetailController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -97,15 +98,23 @@ Route::prefix('/cuahang')->group(function () {
 });
 
 // Thêm vào giỏ hàng
-    Route::post('/add-cart', [CartController::class, 'index']);
+Route::post('/add-cart', [CartController::class, 'index']);
 
 //Hiển thị trang giỏ hàng
-    Route::get('/cart', [CartController::class, 'show']);
-    Route::get('/carts/delete{id}', [CartController::class, 'remove']);
+Route::get('/cart', [CartController::class, 'show']);
+Route::get('/carts/delete/{id}', [CartController::class, 'remove']);
+Route::post('/update', [CartController::class, 'update']);
+
+
 //Check out - Thủ tục thanh toán
-    Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::get('/checkout', [CheckoutController::class, 'index']);
+
+Route::post('/checkout', [CheckoutController::class, 'addCart']);
+
 
 // Trang liên hệ
 Route::get('/lienhe', [ContactController::class, 'index']);
 Route::post('/lienhe', [ContactController::class, 'sendmessage']);
 
+// Viết bình luận
+Route::post('/send_comment', [SendCommentController::class, 'sendcomment']);

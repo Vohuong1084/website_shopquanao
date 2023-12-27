@@ -26,35 +26,28 @@
                 <h3 class="font-weight-semi-bold">{{ $product->nameproduct }}</h3>
                 <div class="d-flex mb-3">
                     <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
+                        @for ($i = 1; $i <= 5; $i++)
+                            @if ($i <= $star)
+                                <small class="zmdi zmdi-star"></small>
+                            @else
+                                <small class="zmdi zmdi-star-outline"></small>
+                            @endif
+                        @endfor
                     </div>
-                    <small class="pt-1">(50 Reviews)</small>
+
+                    <small class="pt-1">({{ $num_review }} bình luận)</small>
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">{{ number_format($product->price) }} VNĐ</h3>
+                
                 <div class="d-flex mb-3">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="size-{{ $product->id }}" name="size">
-                            <label class="custom-control-label"
-                                for="size-{{ $product->id }}">{{ $product->namesize }}</label>
-                        </div>
-                    </form>
+                    <p class="text-dark font-weight-medium mb-0 mr-3">Size:</p>
+                    <label>{{ $product->namesize }}</label>
+                    <input type="hidden" name="namesize" value="{{ $product->namesize }}">
                 </div>
-                <div class="d-flex mb-4">
-                    <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
-                    <form>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="color-{{ $product->id }}"
-                                name="color">
-                            <label class="custom-control-label"
-                                for="color-{{ $product->id }}">{{ $product->namecolor }}</label>
-                        </div>
-                    </form>
+                <div class="d-flex mb-3">
+                    <p class="text-dark font-weight-medium mb-0 mr-3">Color:</p>
+                    <label>{{ $product->namecolor }}</label>
+                    <input type="hidden" name="namecolor" value="{{ $product->namecolor }}">
                 </div>
                 <form action="/add-cart" method="post">
                     @csrf
@@ -85,23 +78,6 @@
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                         </div>
                     </div>
-                </form>
-                <div class="d-flex pt-2">
-                    <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
-                    <div class="d-inline-flex">
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-dark px-2" href="">
-                            <i class="fab fa-pinterest"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -118,56 +94,89 @@
                     </div>
                     <div class="tab-pane fade" id="tab-pane-2">
                         <div class="row">
+                            {{-- Review --}}
+                            <style>
+                                /* Để đảm bảo thanh cuộn xuất hiện, thiết lập chiều cao cố định cho phần tử chứa nội dung dài */
+                                .scrollable-content {
+                                    max-height: 300px;
+                                    /* Chiều cao tối đa của phần tử chứa nội dung */
+                                    overflow-y: auto;
+                                    /* Hiển thị thanh cuộn dọc khi nội dung vượt quá chiều cao */
+                                }
+                            </style>
                             <div class="col-md-6">
-                                <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
-                                <div class="media mb-4">
-                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
-                                        style="width: 45px;">
-                                    <div class="media-body">
-                                        <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
-                                        <div class="text-primary mb-2">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star-half-alt"></i>
-                                            <i class="far fa-star"></i>
+                                <h4 class="mb-4">Bình luận</h4>
+                                <div class="scrollable-content">
+                                    <div id="comment_show"></div>
+                                    @foreach ($comment as $item)
+                                        <div class="media mb-4">
+                                            <img src="{{ $item->hinhanh }}" alt="Image" class="img-fluid mr-3 mt-1"
+                                                style="width: 45px; border-radius: 50%;">
+                                            <div class="media-body">
+                                                <h6>{{ $item->username }}<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>{{ $item->created_at }}</i></small>
+                                                </h6>
+                                                <div class="text-primary mb-2">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= $item->rating)
+                                                            <i class="zmdi zmdi-star"></i>
+                                                        @else
+                                                            <i class="zmdi zmdi-star-outline"></i>
+                                                        @endif
+                                                    @endfor
+                                                </div>
+                                                <p>{{ $item->comment }}</p>
+                                            </div>
                                         </div>
-                                        <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no
-                                            at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
+                            {{-- End review --}}
+
+                            {{-- Add review --}}
                             <div class="col-md-6">
-                                <h4 class="mb-4">Leave a review</h4>
-                                <small>Your email address will not be published. Required fields are marked *</small>
-                                <div class="d-flex my-3">
-                                    <p class="mb-0 mr-2">Your Rating * :</p>
-                                    <div class="text-primary">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
+                                <h4 class="mb-4">Viết bình luận</h4>
+                                @if (Auth::check())
+                                    <form method="POST">
+                                        <div class="d-flex my-3">
+                                            <p class="mb-0 mr-2">Đánh giá sao * :</p>
+                                            <span class="wrap-rating fs-18 cl11 pointer" id="star">
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <i class="item-rating pointer zmdi zmdi-star-outline"></i>
+                                                <input type="number" class="dis-none" style="display: none" id="rating">
+                                            </span>
+                                        </div>
+
+                                        
+                                        <input type="hidden" name="username" id="username"
+                                            value="{{ Auth::user()->name }}">
+                                        <input type="hidden" name="hinhanh" id="hinhanh"
+                                            value="{{ Auth::user()->hinhanh }}">
+                                        <input type="hidden" name="comment_product_id" id="comment_product_id"
+                                            value="{{ $product->id }}">
+                                        <input type="hidden" name="user_id" id="user_id"
+                                            value="{{ Auth::user()->id }}">
+                                        <div class="form-group">
+                                            <label for="message">Bình luận của bạn *</label>
+                                            <textarea id="message" name="message" cols="30" rows="5" class="form-control"></textarea>
+                                        </div>
+                                        <div id="erorr"></div>
+                                        <div class="form-group mb-0">
+                                            <button type="submit" id="send_comment" class="btn btn-primary px-3">Bình
+                                                luận</button>
+                                        </div>
+                                        @csrf
+                                    </form>
+                                @else
+                                    <div class="d-flex my-3">
+                                        <p>Đăng nhập để viết bình luận</p>
                                     </div>
-                                </div>
-                                <form>
-                                    <div class="form-group">
-                                        <label for="message">Your Review *</label>
-                                        <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="name">Your Name *</label>
-                                        <input type="text" class="form-control" id="name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Your Email *</label>
-                                        <input type="email" class="form-control" id="email">
-                                    </div>
-                                    <div class="form-group mb-0">
-                                        <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
-                                    </div>
-                                </form>
+                                @endif
+
                             </div>
+                            {{-- End add review --}}
                         </div>
                     </div>
                 </div>
@@ -194,8 +203,7 @@
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                 <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$123.00</h6>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h6>{{ number_format($item->price) }} VNĐ</h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">

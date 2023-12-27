@@ -23,28 +23,9 @@
                 <!-- Price Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Giá tiền</h5>
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="price-all">
-                            <label class="custom-control-label" for="price-all">Tất cả</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1">
-                            <label class="custom-control-label" for="price-1">100.000 - 200.000</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-2">
-                            <label class="custom-control-label" for="price-2">200.000 - 300.000</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-3">
-                            <label class="custom-control-label" for="price-3">300.000 - 400.000</label>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-4">
-                            <label class="custom-control-label" for="price-4">400.000 - 500.000</label>
-                        </div>
-                    </form>
+                    <input type="text" disabled id="amount" readonly style="background-color: white; border:0; color:#f6931f; font-weight:bold;">
+
+                    <div id="slider-range"></div>
                 </div>
                 <!-- Price End -->
 
@@ -52,12 +33,16 @@
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Màu</h5>
                     <form id="myForm">
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
-                            <a href="{{ request()->url() }}" style="text-decoration: none" class="btn text-dark pl-0">Tất cả</a>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->url() }}" style="text-decoration: none" class="btn text-dark pl-0">Tất
+                                cả</a>
                         </div>
                         @foreach ($color as $item)
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
-                                <a href="{{ request()->fullUrlWithQuery(['namecolor' => $item->namecolor]) }}" style="text-decoration: none" class="btn text-dark pl-0">{{ $item->namecolor }}</a>
+                            <div
+                                class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                                <a href="{{ request()->fullUrlWithQuery(['namecolor' => $item->namecolor]) }}"
+                                    style="text-decoration: none" class="btn text-dark pl-0">{{ $item->namecolor }}</a>
                             </div>
                         @endforeach
                     </form>
@@ -68,12 +53,16 @@
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Kích cỡ</h5>
                     <form id="sizeForm">
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
-                            <a href="{{ request()->url() }}" style="text-decoration: none" class="btn text-dark pl-0">Tất cả</a>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->url() }}" style="text-decoration: none" class="btn text-dark pl-0">Tất
+                                cả</a>
                         </div>
                         @foreach ($size as $item)
-                            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
-                                <a href="{{ request()->fullUrlWithQuery(['namesize' => $item->namesize]) }}" style="text-decoration: none" class="btn text-dark pl-0">{{ $item->namesize }}</a>
+                            <div
+                                class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                                <a href="{{ request()->fullUrlWithQuery(['namesize' => $item->namesize]) }}"
+                                    style="text-decoration: none" class="btn text-dark pl-0">{{ $item->namesize }}</a>
                             </div>
                         @endforeach
                     </form>
@@ -98,7 +87,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="dropdown ml-4">
+                            {{-- <div class="dropdown ml-4">
                                 <button class="btn border dropdown-toggle" type="button" id="triggerId"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sắp xếp
@@ -106,6 +95,49 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
                                     <a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['price' => 'asc']) }}">Giá tăng dần</a>
                                     <a class="dropdown-item" href="{{ request()->fullUrlWithQuery(['price' => 'desc']) }}">Giá giảm dần</a>
+                                </div>
+                            </div> --}}
+                            <style>
+                                .xt-ct-menu {
+                                    position: relative;
+                                    display: inline-block;
+                                }
+
+                                .xtlab-ctmenu-item {
+                                    color: black;
+                                    padding: 16px;
+                                    font-size: 16px;
+                                    border: solid 1px #EDF1FF;
+                                    cursor: pointer;
+                                }
+
+                                .xtlab-ctmenu-sub {
+                                    display: none;
+                                    position: absolute;
+                                    min-width: 160px;
+                                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                                }
+
+                                .xtlab-ctmenu-sub a {
+                                    color: black;
+                                    padding: 12px 16px;
+                                    text-decoration: none;
+                                    display: block;
+                                }
+
+                                .xtlab-ctmenu-sub a:hover {
+                                    background-color: transparent;
+                                    border: none;
+
+                                }
+                            </style>
+                            <div class="menu1 xt-ct-menu">
+                                <div class="xtlab-ctmenu-item btn border dropdown-toggle">Sắp xếp</div>
+                                <div class="xtlab-ctmenu-sub">
+                                    <a class="dropdown-item"
+                                        href="{{ request()->fullUrlWithQuery(['price' => 'asc']) }}">Giá tăng dần</a>
+                                    <a class="dropdown-item"
+                                        href="{{ request()->fullUrlWithQuery(['price' => 'desc']) }}">Giá giảm dần</a>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +157,8 @@
                                         </div>
                                     </div>
                                     <div class="card-footer d-flex justify-content-center bg-light border">
-                                        <a href="/cuahang/{{ $item->id }}/{{ Str::slug($item->nameproduct) }}.html" class="btn btn-sm text-dark p-0"><i
+                                        <a href="/cuahang/{{ $item->id }}/{{ Str::slug($item->nameproduct) }}.html"
+                                            class="btn btn-sm text-dark p-0"><i
                                                 class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                     </div>
                                 </div>

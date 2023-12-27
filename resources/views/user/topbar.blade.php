@@ -18,17 +18,19 @@
         </form>
     </div>
     <div class="col-lg-3 col-6 text-right">
-        @if (Auth::check())
-            <a href="/cart" class="btn border"
-                data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
-                <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}</span>
-            </a>
-        @else
-            <a href="/cart" class="btn border">
-                <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
-        @endif
+        @php
+            if (is_null(Session::get('carts'))) {
+                $productQuantity = 0;
+            } elseif (Auth::check()) {
+                $productQuantity = count(Session::get('carts'));
+            } else {
+                $productQuantity = 0;
+            }
+        @endphp
+        <a href="/cart" class="btn border"
+            data-notify="{{ $productQuantity }}">
+            <i class="fas fa-shopping-cart text-primary"></i>
+            <span class="badge">{{ $productQuantity }}</span>
+        </a>
     </div>
 </div>

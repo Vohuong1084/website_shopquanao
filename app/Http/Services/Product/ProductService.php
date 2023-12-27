@@ -165,7 +165,7 @@ class ProductService
     return $results;
     }
 
-    // Liệt kê sản phẩm theo danh mục
+    // Liệt kê sản phẩm theo danh mục trong trang chi tiết sản phẩm
     public function getProductMenu($product) {
         return DB::table('products')->where('menu_id', '=', $product->menu_id)->get();
     }
@@ -179,5 +179,16 @@ class ProductService
         ->join('sizes', 'sizes.id', '=', 'products.size_id')
         ->where('sizes.namesize', $request->input('namesize'))
         ->select('products.*', 'menus.name', 'colors.namecolor', 'sizes.namesize');
+    }
+
+    // Giá tiền nhỏ nhất
+    public function min_price() {
+        return DB::table('products')->min('price');
+        // return $min = $result->price;
+    }
+
+    // Giá tiền lớn nhất 
+    public function max_price() {
+
     }
 }

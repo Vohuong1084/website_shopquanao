@@ -51,4 +51,5 @@ class CartController extends Controller
         $this->cartService->remove($id);
         return redirect()->back();
     }
+    
 }

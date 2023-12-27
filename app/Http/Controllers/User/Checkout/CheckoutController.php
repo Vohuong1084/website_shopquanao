@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\Checkout;
 use App\Http\Services\Checkout\CheckoutServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
@@ -22,7 +23,14 @@ class CheckoutController extends Controller
 
         return view('user.Checkout.checkout', [
             'title' => 'Thủ tục thanh toán',
-            'products' => $products
+            'products' => $products,
+            'carts' => Session::get('carts')
         ]);
+    }
+
+    public function addCart(Request $request) {
+        $this->checkoutService->addCart($request);
+
+        return redirect()->back();
     }
 }

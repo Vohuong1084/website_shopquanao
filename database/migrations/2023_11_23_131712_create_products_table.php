@@ -25,11 +25,11 @@ return new class extends Migration
                 ->references('id')
                 ->on('menus')
                 ->onDelete('cascade');
-                $table->foreign('size_id')
+            $table->foreign('size_id')
                 ->references('id')
                 ->on('sizes')
                 ->onDelete('cascade');
-                $table->foreign('color_id')
+            $table->foreign('color_id')
                 ->references('id')
                 ->on('colors')
                 ->onDelete('cascade');
