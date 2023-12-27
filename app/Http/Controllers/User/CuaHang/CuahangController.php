@@ -28,9 +28,7 @@ class CuahangController extends Controller
         $product = $this->ProductService->get($request);
         $color = $this->ColorServices->getAllColor();
         $size = $this->SizeServices->getAllSize();
-        $min_price = $this->ProductService->min_price();
-        $max_price = $this->ProductService->max_price();
-        return view('user.CuaHang.CuaHang', compact('title', 'product', 'color', 'size', 'min_price'));
+        return view('user.CuaHang.CuaHang', compact('title', 'product', 'color', 'size'));
     }
 
     // Trang cửa hàng theo danh mục
@@ -40,7 +38,7 @@ class CuahangController extends Controller
         $color = $this->ColorServices->getAllColor();
         $size = $this->SizeServices->getAllSize();
         $product = $this->ProductService->getByMenu($menus, $request);
-        return view('user.CuaHang.CuaHang', compact('title', 'product', 'color', 'size', 'min_price'));
+        return view('user.CuaHang.CuaHang', compact('title', 'product', 'color', 'size'));
     }
 
     // Phân loại size 

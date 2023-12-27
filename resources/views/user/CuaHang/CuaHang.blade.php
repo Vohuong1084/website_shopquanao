@@ -23,9 +23,33 @@
                 <!-- Price Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Giá tiền</h5>
-                    <input type="text" disabled id="amount" readonly style="background-color: white; border:0; color:#f6931f; font-weight:bold;">
-
-                    <div id="slider-range"></div>
+                    <form id="myForm">
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->url() }}" style="text-decoration: none" class="btn text-dark pl-0">Tất
+                                cả</a>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->fullUrlWithQuery(['price' => 1]) }}" style="text-decoration: none" class="btn text-dark pl-0">Dưới 200.000</a>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->fullUrlWithQuery(['price' => 2]) }}" style="text-decoration: none" class="btn text-dark pl-0">Từ 200.000 - dưới 300.000</a>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->fullUrlWithQuery(['price' => 3]) }}" style="text-decoration: none" class="btn text-dark pl-0">Từ 300.000 - dưới 400.000</a>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->fullUrlWithQuery(['price' => 4]) }}" style="text-decoration: none" class="btn text-dark pl-0">Từ 400.000 - dưới 500.000</a>
+                        </div>
+                        <div
+                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 pl-0">
+                            <a href="{{ request()->fullUrlWithQuery(['price' => 5]) }}" style="text-decoration: none" class="btn text-dark pl-0">Từ 500.000 - dưới 600.000</a>
+                        </div>
+                    </form>
                 </div>
                 <!-- Price End -->
 

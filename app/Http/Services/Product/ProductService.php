@@ -55,7 +55,30 @@ class ProductService
             $query->where('sizes.namesize', $request->input('namesize'));
         }
         if ($request->input('price')) {
-            $query->orderBy('price', $request->input('price'));
+            $price = $request->input('price');
+            switch ($price) {
+                case '1':
+                    $query->where('price', '<', 200000);
+                    break;
+                case '2':
+                    $query->whereBetween('price', [200000, 300000]);
+                    break;
+                case '3':
+                    $query->whereBetween('price', [300000, 400000]);
+                    break;
+                case '4':
+                    $query->whereBetween('price', [400000, 500000]);
+                    break;
+                case '5':
+                    $query->whereBetween('price', [500000, 600000]);
+                    break;
+                case 'asc':
+                    $query->orderBy('price', $request->input('price'));
+                    break;
+                case 'desc':
+                    $query->orderBy('price', $request->input('price'));
+                    break;
+            }
         }
         return $query
         ->orderByDesc('id')
@@ -149,7 +172,30 @@ class ProductService
             $query->where('sizes.namesize', $request->input('namesize'));
         }
         if ($request->input('price')) {
-            $query->orderBy('price', $request->input('price'));
+            $price = $request->input('price');
+            switch ($price) {
+                case '1':
+                    $query->where('price', [100000, 200000]);
+                    break;
+                case '2':
+                    $query->whereBetween('price', [200000, 300000]);
+                    break;
+                case '3':
+                    $query->whereBetween('price', [300000, 400000]);
+                    break;
+                case '4':
+                    $query->whereBetween('price', [400000, 500000]);
+                    break;
+                case '5':
+                    $query->whereBetween('price', [500000, 600000]);
+                    break;
+                case 'asc':
+                    $query->orderBy('price', $request->input('price'));
+                    break;
+                case 'desc':
+                    $query->orderBy('price', $request->input('price'));
+                    break;
+            }
         }
         return $query
         ->orderByDesc('id')
@@ -171,16 +217,5 @@ class ProductService
         ->join('sizes', 'sizes.id', '=', 'products.size_id')
         ->where('sizes.namesize', $request->input('namesize'))
         ->select('products.*', 'menus.name', 'colors.namecolor', 'sizes.namesize');
-    }
-
-    // Giá tiền nhỏ nhất
-    public function min_price() {
-        return DB::table('products')->min('price');
-        // return $min = $result->price;
-    }
-
-    // Giá tiền lớn nhất 
-    public function max_price() {
-
     }
 }
