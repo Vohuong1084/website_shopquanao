@@ -3,7 +3,6 @@
         <a href="/home" class="text-decoration-none">
             <h1 class="mb-4 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border border-white px-3 mr-1">E</span>Shopper</h1>
         </a>
-        <p>Dolore erat dolor sit lorem vero amet. Sed sit lorem magna, ipsum no sit erat lorem et magna ipsum dolore amet erat.</p>
     </div>
     <div class="col-lg-8 col-md-12">
         <div class="row">
@@ -12,7 +11,7 @@
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-dark mb-2" href="/home">Trang chủ</a>
                     <a class="text-dark mb-2" href="/cuahang">Cửa hàng</a>
-                    <a class="text-dark mb-2" href="/checkout">Checkout</a>
+                    <a class="text-dark mb-2" href="/checkout">Thanh toán</a>
                     <a class="text-dark mb-2" href="/lienhe">Liên hệ</a>
                 </div>
             </div>

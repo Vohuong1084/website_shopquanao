@@ -28,7 +28,7 @@
                                 <thead class="bg-secondary text-dark">
                                     <tr>
                                         <th>Sản phẩm</th>
-                                        {{-- <th></th> --}}
+                                        <th>Hình ảnh</th>
                                         <th>Giá</th>
                                         <th>Số lượng</th>
                                         <th>Màu</th>
@@ -45,9 +45,8 @@
                                             $total += $endPrice;
                                         @endphp
                                         <tr>
-                                           
-                                            <td class="align-middle"><img src="{{ $item->hinhanhproduct }}" width="100"> <br>
-                                                {{ $item->nameproduct }}</td>
+                                            <td class="align-middle">{{ $item->nameproduct }}</td>
+                                            <td><img src="{{ $item->hinhanhproduct }}" width="100"></td>
                                             <td class="align-middle">{{ number_format($price) }} VNĐ</td>
                                             <td class="align-middle">
                                                 <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -95,7 +94,7 @@
                                 <div class="card-footer border-secondary bg-transparent">
                                     <div class="d-flex justify-content-between mt-2">
                                         <h5 class="font-weight-bold">Total</h5>
-                                        <h5 class="font-weight-bold">{{ number_format($total) }}</h5>
+                                        <h5 class="font-weight-bold">{{ number_format($total) }} VNĐ</h5>
                                     </div>
                                     <a href="/checkout" class="btn btn-block btn-primary my-3 py-3">Proceed To
                                         Checkout </a>

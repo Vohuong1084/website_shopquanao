@@ -27,11 +27,6 @@
                 <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
                     id="navbar-vertical">
                     <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-
-                        {{-- <a href="" class="nav-item nav-link">Nam</a>
-                        <a href="" class="nav-item nav-link">Nữ</a>
-                        <a href="" class="nav-item nav-link">Bé Trai</a>
-                        <a href="" class="nav-item nav-link">Bé Gái</a> --}}
                         @foreach ($menus as $item)
                             <a href="/cuahang/{{ $item->id }}-{{ Str::slug($item->name) }}.html"
                                 class="nav-item nav-link">{{ $item->name }}</a>
@@ -53,7 +48,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/home" class="nav-item nav-link">Trang chủ</a>
                             <a href="/cuahang" class="nav-item nav-link">Cửa hàng</a>
-                            <a href="/checkout" class="nav-item nav-link">Checkout</a>
+                            <a href="/checkout" class="nav-item nav-link">Thanh toán</a>
                             <a href="/lienhe" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
@@ -75,7 +70,7 @@
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
                                         Order</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                    <a href="/cuahang" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +81,7 @@
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
                                         Order</h4>
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                                    <a href="/cuahang" class="btn btn-light py-2 px-3">Shop Now</a>
                                 </div>
                             </div>
                         </div>
@@ -114,25 +109,25 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                     <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+                    <h5 class="font-weight-semi-bold m-0">Sản phẩm chất lượng tốt</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                     <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                    <h5 class="font-weight-semi-bold m-0">Miễn phí vận chuyển</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                     <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
+                    <h5 class="font-weight-semi-bold m-0">14 ngày đổi trả</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                     <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                    <h5 class="font-weight-semi-bold m-0">Hỗ trợ 24/7</h5>
                 </div>
             </div>
         </div>
@@ -146,7 +141,7 @@
             @foreach ($menus as $key => $menu)
                 <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                     <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                        <a href="/danh-muc/{{ $menu->id }}-{{ $menu->name}}" class="cat-img position-relative overflow-hidden mb-3">
+                        <a href="/cuahang/{{ $menu->id }}-{{ Str::slug($menu->name) }}.html" class="cat-img position-relative overflow-hidden mb-3">
                             <img class="img-fluid" src="{{ $menu->hinhanh }}" alt="">
                         </a>
                         <h5 class="font-weight-semi-bold m-0 text-center">{{ $menu->name }}</h5>

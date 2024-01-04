@@ -15,9 +15,10 @@ use App\Http\Controllers\Admin\Users\LogoutController;
 use App\Http\Controllers\Admin\Users\RegisterController;
 use App\Http\Controllers\User\Contact\ContactController;
 use App\Http\Controllers\User\CuaHang\CuahangController;
-use App\Http\Controllers\Admin\Users\ChangeinforController;
 use App\Http\Controllers\User\Checkout\CheckoutController;
+use App\Http\Controllers\Admin\Users\ChangeinforController;
 use App\Http\Controllers\User\Comment\SendCommentController;
+use App\Http\Controllers\Admin\listCustomer\CustomerController;
 use App\Http\Controllers\User\ProductDetail\ProductDetailController;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -73,6 +74,13 @@ Route::middleware(['auth'])->group(function () {
             Route::DELETE('destroy', [SizeController::class, 'destroy']);
         });
 
+        #Customer (đơn đặt hàng)
+        Route::prefix('/listCustomer')->group(function () {
+            Route::get('/', [CustomerController::class, 'index'])->name('listCustomer');
+            Route::get('/{customer}', [CustomerController::class, 'inforCart']);
+            Route::DELETE('destroy', [CustomerController::class, 'destroy']);
+        });
+
         #upload
         Route::post('upload/services', [UploadController::class, 'store']);
     });
@@ -108,7 +116,6 @@ Route::post('/update', [CartController::class, 'update']);
 
 //Check out - Thủ tục thanh toán
 Route::get('/checkout', [CheckoutController::class, 'index']);
-
 Route::post('/checkout', [CheckoutController::class, 'addCart']);
 
 
