@@ -18,8 +18,8 @@
         @if (Auth::check())
 
         <form method="post">
+            @include('user.alert')
             <div class="row px-xl-5">
-                @include('user.alert')
                 <div class="col-lg-6">
                     <div class="mb-4">
                         <h4 class="font-weight-semi-bold mb-4">Địa chỉ thanh toán</h4>
@@ -109,11 +109,12 @@
                             <table class="table">
 
                                 <tr>
-                                    <th>Sản phẩm</th>
-                                    <th>Màu</th>
-                                    <th>Kích cỡ</th>
-                                    <th>Số lượng</th>
-                                    <th>Giá</th>
+                                    <th class="text-center">Sản phẩm</th>
+                                    <th class="text-center">Hình ảnh</th>
+                                    <th class="text-center">Màu</th>
+                                    <th class="text-center">Kích cỡ</th>
+                                    <th class="text-center">Số lượng</th>
+                                    <th class="text-center">Giá</th>
                                 </tr>
                                 @foreach ($products as $key => $item)
                                     <tr>
@@ -122,14 +123,16 @@
                                             $endPrice = $price * $carts[$item->id];
                                             $total += $endPrice;
                                         @endphp
-                                        <td class="align-middle" style="width: 350px;">{{ $item->nameproduct }}
-                                            <img src="{{ $item->hinhanhproduct }}" width="100px" height="100px"
-                                                alt="">
+                                        <td class="align-middle text-center" style="width: 350px;">{{ $item->nameproduct }}
+                                            {{-- <img src="{{ $item->hinhanhproduct }}" width="100px" height="100px"
+                                                alt=""> --}}
                                         </td>
-                                        <td class="align-middle"style="width: 70px">{{ $item->namecolor }}</td>
-                                        <td class="align-middle"style="width: 150px">{{ $item->namesize }}</td>
-                                        <td class="align-middle"style="width: 150px">{{ $carts[$item->id] }}</td>
-                                        <td class="align-middle"style="width: 300px">{{ number_format($price) }} VNĐ</td>
+                                        <td class="align-middle text-center"><img src="{{ $item->hinhanhproduct }}" width="100px" height="100px"
+                                            alt=""></td>
+                                        <td class="align-middle text-center"style="width: 70px">{{ $item->namecolor }}</td>
+                                        <td class="align-middle text-center"style="width: 150px">{{ $item->namesize }}</td>
+                                        <td class="align-middle text-center"style="width: 150px">{{ $carts[$item->id] }}</td>
+                                        <td class="align-middle text-center"style="width: 300px">{{ number_format($endPrice) }} VNĐ</td>
                                     </tr>
                                 @endforeach
                                 {{-- <div class="d-flex justify-content-between">
